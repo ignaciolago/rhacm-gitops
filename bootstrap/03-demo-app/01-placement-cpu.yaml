@@ -1,0 +1,22 @@
+---
+apiVersion: cluster.open-cluster-management.io/v1beta1
+kind: Placement
+metadata:
+  name: gitops-clusters-cpu
+  namespace: openshift-gitops
+spec:
+  clusterSets:
+    - gitops-clusters
+  numberOfClusters: 1
+  prioritizerPolicy:
+    configurations:
+      - scoreCoordinate:
+          type: BuiltIn
+          builtIn: 
+            ResourceAllocatableCPU
+        weight: 10
+      - scoreCoordinate:
+          type: BuiltIn
+          builtIn: 
+            ResourceAllocatableMemory
+        weight: 10

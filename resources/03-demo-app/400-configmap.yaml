@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: application-properties
+  namespace: demo-app
+data:
+  application.properties: |-
+
+    application.name=@project.artifactId@
+    build.version=@project.version@
+    build.timestamp=@timestamp@

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace 
+#kubernetes api element kind for namespace
+metadata:
+  annotations:
+  name: openshift-gitops 
+#default name for the installation in Openshift
+spec: {}

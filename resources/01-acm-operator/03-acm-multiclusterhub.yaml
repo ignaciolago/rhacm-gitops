@@ -1,0 +1,11 @@
+# Create MulticlusterHub CRD
+# oc get mch -o=jsonpath='{.items[0].status.phase}' -n open-cluster-management
+---
+apiVersion: operator.open-cluster-management.io/v1
+kind: MultiClusterHub
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  name: multiclusterhub
+  namespace: open-cluster-management
+spec: {}

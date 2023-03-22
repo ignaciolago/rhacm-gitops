@@ -1,0 +1,6 @@
+resources:
+- 000-namespace.yaml
+- 100-deployment.yaml
+- 200-service.yaml
+- 300-route.yaml
+- 400-configmap.yaml
