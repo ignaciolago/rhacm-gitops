@@ -6,11 +6,12 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/ignaciolago/service-mesh-gitops.git
-      revision: main
-      directories:
-      - path: resources/05-service-mesh-operators
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: gitops-clusters
+        requeueAfterSeconds: 180
   template:
     metadata:
       name: '{{path.basename}}'
