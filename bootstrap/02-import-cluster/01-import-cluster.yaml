@@ -6,35 +6,6 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/ignaciolago/service-mesh-gitops.git
-      revision: dev2
-      directories:
-      - path: resources/02_import-openshift-cluster/base
-  template:
-    metadata:
-      name: '{{path.basename}}'
-    spec:
-      project: service-mesh-poc-appset
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-      source:
-        repoURL: https://github.com/ignaciolago/service-mesh-gitops.git
-        targetRevision: dev2
-        path: '{{path}}'
-      destination:
-        server: https://kubernetes.default.svc
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: service-mesh-operators
-  namespace: openshift-gitops
-spec:
-  generators:
     - clusterDecisionResource:
         configMapRef: acm-placement
         labelSelector:
