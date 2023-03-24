@@ -1,0 +1,4 @@
+---
+bases:
+- cluster-import.yaml
+

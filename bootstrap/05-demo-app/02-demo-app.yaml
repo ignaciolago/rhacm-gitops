@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: https://github.com/ignaciolago/rhacm-gitops.git
         targetRevision: main
-        path: resources/03-demo-app
+        path: resources/05-demo-app
       destination:
         namespace: openshift-gitops
         server: "{{server}}"

@@ -1,0 +1,48 @@
+---
+apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: sandbox772
+  labels:
+    name: sandbox772
+    cloud: auto-detect
+    vendor: auto-detect
+    cluster.open-cluster-management.io/clusterset: gitops-clusters
+  annotations: {}
+spec:
+  hubAcceptsClient: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auto-import-secret
+  namespace: sandbox772
+stringData:
+  autoImportRetry: "2"
+  token: sha256~ICExoipGMk4MyvBA7f3HGcWVXa0Bc4A5Nw-E0To2eJM
+  server: https://api.cluster-s5xpn.s5xpn.sandbox772.opentlc.com:6443
+type: Opaque
+---
+apiVersion: agent.open-cluster-management.io/v1
+kind: KlusterletAddonConfig
+metadata:
+  name: sandbox772
+  namespace: sandbox772
+spec:
+  clusterName: sandbox772
+  clusterNamespace: sandbox772
+  clusterLabels:
+    name: sandbox772
+    cloud: auto-detect
+    vendor: auto-detect
+    cluster.open-cluster-management.io/clusterset: gitops-clusters
+  applicationManager:
+    enabled: true
+  policyController:
+    enabled: true
+  searchCollector:
+    enabled: true
+  certPolicyController:
+    enabled: true
+  iamPolicyController:
+    enabled: true

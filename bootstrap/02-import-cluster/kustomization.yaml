@@ -1,0 +1,4 @@
+---
+resources:
+- 00-import-cluster-app-project.yaml
+- 01-import-cluster.yaml

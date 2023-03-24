@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: https://github.com/ignaciolago/acm-ocp-azure.git
         targetRevision: main
-        path: resources/02-acm-operator-integration
+        path: resources/03-acm-operator-integration
       destination:
         server: https://kubernetes.default.svc
 
