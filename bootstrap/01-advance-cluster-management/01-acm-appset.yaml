@@ -8,7 +8,8 @@ metadata:
 spec:
   generators:
   - list:
-      elements: {}
+      elements: 
+      - name: in-cluster 
   template:
     metadata:
       name: advance-cluster-management-{{name}}
