@@ -7,12 +7,8 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-    - clusterDecisionResource:
-        configMapRef: acm-placement
-        labelSelector:
-          matchLabels:
-            cluster.open-cluster-management.io/placement: local-placement
-        requeueAfterSeconds: 180
+#edi que sea solo 1 cluster
+  - clusters: {} 
   template:
     metadata:
       name: advance-cluster-management-{{name}}
