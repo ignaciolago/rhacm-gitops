@@ -7,7 +7,12 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-  - clusters: {} 
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: local-placement
+        requeueAfterSeconds: 180
   template:
     metadata:
       name: acm-argocd-integration-{{name}}
