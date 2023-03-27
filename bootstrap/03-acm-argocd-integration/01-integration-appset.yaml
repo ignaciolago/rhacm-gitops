@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: https://github.com/ignaciolago/rhacm-gitops.git
         targetRevision: main
-        path: resources/03-acm-operator-integration
+        path: resources/03-acm-argocd-integration
       destination:
         server: https://kubernetes.default.svc
 
