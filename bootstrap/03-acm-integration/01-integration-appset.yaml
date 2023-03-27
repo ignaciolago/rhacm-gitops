@@ -18,7 +18,7 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: https://github.com/ignaciolago/acm-ocp-azure.git
+        repoURL: https://github.com/ignaciolago/rhacm-gitops.git
         targetRevision: main
         path: resources/03-acm-operator-integration
       destination:
