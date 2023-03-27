@@ -10,7 +10,7 @@ spec:
   - clusters: {} 
   template:
     metadata:
-      name: advance-cluster-management-{{name}}
+      name: acm-argocd-integration-{{name}}
     spec:
       project: advance-cluster-management
       syncPolicy:
