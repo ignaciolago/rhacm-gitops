@@ -6,12 +6,9 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-    - clusterDecisionResource:
-        configMapRef: acm-placement
-        labelSelector:
-          matchLabels:
-            cluster.open-cluster-management.io/placement: local-placement
-        requeueAfterSeconds: 180
+  - list:
+      elements: 
+      - name: in-cluster 
   template:
     metadata:
       name: import-cluster-{{name}}
