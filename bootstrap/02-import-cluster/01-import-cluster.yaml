@@ -18,7 +18,7 @@ spec:
       labels:
         velero.io/exclude-from-backup: "true"
     spec:
-      project: service-mesh-operators
+      project: policies
       syncPolicy:
         automated:
           prune: true
