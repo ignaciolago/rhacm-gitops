@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: demo-app
+  name: policies
   namespace: openshift-gitops
 spec:
   generators:
@@ -9,7 +9,7 @@ spec:
         configMapRef: acm-placement
         labelSelector:
           matchLabels:
-            cluster.open-cluster-management.io/placement: gitops-clusters-cpu
+            cluster.open-cluster-management.io/placement: gitops-clusters
         requeueAfterSeconds: 180
   template:
     metadata:
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: https://github.com/ignaciolago/rhacm-gitops.git
         targetRevision: main
-        path: resources/04_policies
+        path: resources/04-policies
       destination:
         namespace: openshift-gitops
         server: "{{server}}"
