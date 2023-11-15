@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonAnnotations:
+  argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+resources:
+- 00_elastic_search_operator.yaml
+- 00_jaeger_operator.yaml
+- 00_kiali_operator.yaml
+- 01_ocp_servicemesh_operator.yaml

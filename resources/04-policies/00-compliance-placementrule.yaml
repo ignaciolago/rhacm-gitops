@@ -1,0 +1,16 @@
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
+  name: compliance-policy-placement
+  namespace: default
+spec:
+  clusterConditions: []
+  clusterSelector:
+    matchExpressions:
+      - key: vendor
+        operator: In
+        values:
+          - OpenShift

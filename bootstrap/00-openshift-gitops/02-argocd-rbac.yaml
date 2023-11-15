@@ -1,0 +1,17 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+# role base access control binding for argocd permissions
+metadata:
+  name: argocd-rbac-ca
+# name for the role binding
+subjects:
+  - kind: ServiceAccount
+# tied to the argocd service account
+    name: openshift-gitops-argocd-application-controller
+# since we are using applications we use the argocd application controller
+    namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+# in this example we are using cluster-admin but we can give it lesser permissions if needed

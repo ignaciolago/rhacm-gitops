@@ -1,0 +1,16 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "8"
+  name: namespace-policy-placementbinding
+  namespace: default
+placementRef:
+  name: namespace-policy-placement
+  apiGroup: apps.open-cluster-management.io
+  kind: PlacementRule
+subjects:
+  - name: namespace-policy
+    apiGroup: policy.open-cluster-management.io
+    kind: Policy

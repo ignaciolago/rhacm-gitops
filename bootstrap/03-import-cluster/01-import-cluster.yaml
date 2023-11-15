@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: import-openshift-cluster
+  namespace: openshift-gitops
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: in-cluster
+  template:
+    metadata:
+      name: import-cluster-{{cluster}}
+      labels:
+        velero.io/exclude-from-backup: "true"
+    spec:
+      project: policies
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/ignaciolago/rhacm-gitops.git
+        targetRevision: main
+        path: resources/03-import-cluster
+      destination:
+        server: https://kubernetes.default.svc

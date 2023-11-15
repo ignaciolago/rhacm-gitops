@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: demo-app
+  namespace: openshift-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: gitops-clusters-cpu
+        requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: demo-app-{{name}}
+      labels:
+        velero.io/exclude-from-backup: "true"
+    spec:
+      project: demo-app
+      source:
+        repoURL: https://github.com/ignaciolago/rhacm-gitops.git
+        targetRevision: main
+        path: resources/05-demo-app
+      destination:
+        namespace: openshift-gitops
+        server: "{{server}}"
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+          - PruneLast=true
